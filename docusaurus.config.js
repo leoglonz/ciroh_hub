@@ -2,6 +2,9 @@ import { themes as prismThemes } from "prism-react-renderer";
 import dotenv from 'dotenv';
 
 dotenv.config();
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const baseUrl = "/";
 
@@ -21,6 +24,16 @@ const config = {
       process.env.VITE_API_BASE_URL ||
       'https://67h5z9ih7j.execute-api.us-east-1.amazonaws.com/default',
     githubProjectToken: process.env.GITHUB_PROJECT_TOKEN,
+  },
+
+  customFields: {
+    apiBaseUrl:
+      process.env.REACT_APP_API_BASE_URL ||
+      process.env.VITE_API_BASE_URL ||
+      'https://67h5z9ih7j.execute-api.us-east-1.amazonaws.com/default',
+    onBrokenMarkdownLinks: "warn",
+    onBrokenMarkdownImages: "warn",
+    githubProjectToken: process.env.GITHUB_PROJECT_TOKEN,    
   },
 
   // GitHub pages deployment config.
@@ -493,10 +506,6 @@ const config = {
             ]
           },
          {
-            type: 'custom-githubAuth',
-            position: 'right',
-          },
-          {
             type: 'custom-githubAuth',
             position: 'right',
           },

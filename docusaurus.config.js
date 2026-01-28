@@ -445,7 +445,7 @@ const config = {
                 label: "Software",
               },
              {
-                href: "/Courses",
+                href: "/courses",
                 label: "Courses",
               } 
             ],

@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const baseUrl = "/";
+const baseUrl = "/local/";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {

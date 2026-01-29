@@ -402,7 +402,7 @@ const config = {
         ],
         copyright: `
           <div class="footer__attrib">
-            Developed with ❤️ by DocuHub Team at CIROH
+            Developed with ❤️ by the CIROH Hub Team
           </div>
           <div class="footer__funding">
             This research was supported by the Cooperative Institute for Research to Operations in Hydrology

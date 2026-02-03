@@ -297,7 +297,7 @@ export default function HydroShareResourcesSelector({
                 </button>
 
                 <div className="tw-flex tw-gap-2">
-                  <button
+                  {/* <button
                     type="button"
                     className={clsx(
                       "tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-border tw-px-3 tw-py-3 tw-transition",
@@ -309,7 +309,7 @@ export default function HydroShareResourcesSelector({
                     title="Grid View"
                   >
                     <FaThLarge size={16} />
-                  </button>
+                  </button> */}
                   <button
                     type="button"
                     className={clsx(

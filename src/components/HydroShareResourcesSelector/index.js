@@ -1,4 +1,4 @@
-import React, { useEffect, useState, startTransition, useRef, useCallback } from "react";
+import React, { useEffect, useState, startTransition, useRef, useCallback, useMemo } from "react";
 import clsx from "clsx";
 import { FaThLarge, FaBars } from "react-icons/fa";
 import styles from "./styles.module.css";
@@ -167,8 +167,11 @@ export default function HydroShareResourcesSelector({
     fetchResources(1);
   }, [keyword, filterSearch, sortDirection, sortType, fetchResources]);
 
-  const nonPlaceholderResources = resources.filter(
-    r => !String(r.resource_id || '').startsWith('placeholder-')
+  const nonPlaceholderResources = useMemo(
+    () => resources.filter(
+      r => !String(r.resource_id || '').startsWith('placeholder-')
+    ),
+    [resources]
   );
 
   useEffect(() => {
@@ -225,9 +228,9 @@ export default function HydroShareResourcesSelector({
     return () => clearTimeout(debounceTimer);
   }, [searchInput]);
 
-  const resultLabel = keyword == 'nwm_portal_app'
+  const resultLabel = keyword === 'nwm_portal_app'
     ? 'Apps'
-    : keyword == 'nwm_portal_module'
+    : keyword === 'nwm_portal_module'
       ? 'Courses'
       : 'Resources';
 

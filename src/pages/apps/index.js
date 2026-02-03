@@ -157,7 +157,7 @@ function AppsPageContent({ contributeUrl, docsUrl, defaultImage }) {
       </section>
 
       {/* Stats */}
-      <div className="tw-relative tw-z-20 tw-border-y  tw-border-slate-200/70 dark:tw-border-slate-700/70 tw-bg-white/60 dark:tw-bg-slate-950 tw-backdrop-blur">
+      <div className="tw-relative tw-z-20 tw-border-y tw-border-slate-200/70 dark:tw-border-slate-700/70 tw-bg-white/60 dark:tw-bg-slate-950 tw-backdrop-blur">
         <div className="tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8 tw-py-6">
           <div className="tw-grid tw-grid-cols-2 md:tw-grid-cols-4 tw-gap-6">
             <div className="tw-text-center">

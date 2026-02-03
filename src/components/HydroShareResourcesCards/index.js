@@ -1,11 +1,9 @@
 import React from 'react';
-import { MdDriveFileMove } from 'react-icons/md';
 import { LiaExternalLinkSquareAltSolid } from 'react-icons/lia';
 import { FaGraduationCap } from 'react-icons/fa';
 import { IoTvOutline } from 'react-icons/io5';
 import { LuLayers3 } from 'react-icons/lu';
 import { HiOutlineGlobeAlt, HiOutlineUserGroup } from 'react-icons/hi';
-import { useColorMode } from '@docusaurus/theme-common';
 
 function isPlaceholder(resource) {
     return typeof resource?.resource_id === 'string' && resource.resource_id.startsWith('placeholder-');

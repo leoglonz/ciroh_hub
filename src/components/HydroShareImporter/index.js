@@ -305,6 +305,24 @@ async function fetchResourcesByKeyword(keyword, { page = 1, count = 15, fullText
   return data.results;
 }
 
+async function fetchDiscoverResourcesCore({
+  keyword,
+  searchText,
+  ascending = false,
+  sortBy = undefined,
+  author = undefined,
+  pageNumber = 1,
+  clampToPageCount = false,
+}) {
+  const url = buildDiscoverApiUrl(keyword, searchText, ascending, sortBy, author, pageNumber);
+  const data = await fetchJson(url, "resources");
+  const resources = parseDiscoverResources(
+    data,
+    clampToPageCount ? { pageNumber } : undefined,
+  );
+  return { data, resources };
+}
+
 /**
  * Fetch resources from HydroShare based on search criteria.
  * @param {string} keyword  - The keyword (subject) to use for the api request
@@ -315,9 +333,15 @@ async function fetchResourcesByKeyword(keyword, { page = 1, count = 15, fullText
  * @returns {Promise<Array>} Array of resource objects
  */
 async function fetchResourcesBySearch(keyword, searchText, ascending=false, sortBy=undefined, author=undefined, pageNumber=1) {
-  const url = buildDiscoverApiUrl(keyword, searchText, ascending, sortBy, author, pageNumber);
-  const data = await fetchJson(url, "resources");
-  return parseDiscoverResources(data);
+  const { resources } = await fetchDiscoverResourcesCore({
+    keyword,
+    searchText,
+    ascending,
+    sortBy,
+    author,
+    pageNumber,
+  });
+  return resources;
 }
 
 /**
@@ -331,9 +355,15 @@ async function fetchResourcesBySearch(keyword, searchText, ascending=false, sort
  * @returns {Promise<Object>} Object containing resources array and pagination metadata
  */
 async function fetchResourcesWithPaginationData(keyword, searchText, ascending=false, sortBy=undefined, author=undefined, pageNumber=1) {
-  const url = buildDiscoverApiUrl(keyword, searchText, ascending, sortBy, author, pageNumber);
-  const data = await fetchJson(url, "resources");
-  const resources = parseDiscoverResources(data, { pageNumber });
+  const { data, resources } = await fetchDiscoverResourcesCore({
+    keyword,
+    searchText,
+    ascending,
+    sortBy,
+    author,
+    pageNumber,
+    clampToPageCount: true,
+  });
 
   // Return the corrected resources with pagination data
   return {

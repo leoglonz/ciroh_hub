@@ -1,4 +1,6 @@
-import DocsLogo from '@site/static/img/contribute/docuhub_logo.png';
+import DocsLogoLight from '@site/static/img/logos/ciroh-light.png'; // TODO: Update DocsLogoLight DocsLogoDark images to CIROH Hub Logo from just the CIROH Logo.
+
+import DocsLogoDark from '@site/static/img/logos/ciroh-dark.png';
 
 import DocsEditDark from '@site/static/img/contribute/docs_edit_dark.png';
 import DocsEditLight from '@site/static/img/contribute/docs_edit_light.png';
@@ -12,15 +14,15 @@ import DocsMDLight from '@site/static/img/contribute/docuhub_md_light3.png';
 import GitHubLogoLight from '@site/static/img/contribute/github_logo_light.png';
 import GitHubLogoDark from '@site/static/img/contribute/github_logo_dark.png';
 
-import TypingGraphic from '@site/static/img/graphics/why-docuhub-5.png'
+import TypingGraphic from '@site/static/img/graphics/why-docuhub-5.png';
 
 export const contributeSimpleDocsCards = [
     {
-      imgSrcLight: DocsLogo,
-      imgSrcDark: DocsLogo,
+      imgSrcLight: DocsLogoLight,
+      imgSrcDark: DocsLogoDark,
       imgAlt: 'Visit the Documentation',
       cardTitle: '1. Visit the documentation',
-      cardDescription: 'Visit docs.ciroh.org and navigate to the page you wish to modify.',
+      cardDescription: 'Visit hub.ciroh.org and navigate to the page you wish to modify.',
     },
     {
       imgSrcLight:DocsEditLight ,

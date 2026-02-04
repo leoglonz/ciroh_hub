@@ -32,6 +32,75 @@ function convertAuthorToLastFirst(author) {
   return author;
 }
 
+async function fetchJson(url, errorContext = "resources") {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Error fetching ${errorContext} (status: ${response.status})`);
+  }
+  return response.json();
+}
+
+function buildDiscoverApiUrl(
+  keyword,
+  searchText,
+  ascending = false,
+  sortBy = undefined,
+  author = undefined,
+  pageNumber = 1,
+) {
+  const filterAuthor = author !== undefined ? convertAuthorToLastFirst(author) : undefined;
+  const filter = {
+    author: [filterAuthor].filter(a => a !== undefined),
+    subject: keyword.split(","),
+  };
+  const params = new URLSearchParams({
+    q: searchText ? searchText : "",
+    subject: keyword,
+    asc: ascending ? "1" : "-1",
+    pnum: pageNumber.toString(),
+    filter: JSON.stringify(filter),
+  });
+  if (sortBy !== undefined) {
+    params.set("sort", sortBy);
+  }
+  return `https://www.hydroshare.org/discoverapi/?${params.toString()}`;
+}
+
+function mapDiscoverResource(resource) {
+  return {
+    resource_id: resource.short_id,
+    resource_title: resource.title,
+    authors: resource.authors,
+    resource_type: resource.type,
+    resource_url: `https://www.hydroshare.org${resource.link}`,
+    abstract: resource.abstract,
+    date_created: resource.created,
+    date_last_updated: resource.modified,
+  };
+}
+
+function parseDiscoverResources(data, { pageNumber } = {}) {
+  if (pageNumber !== undefined && pageNumber > data.pagecount) {
+    return [];
+  }
+
+  if (typeof data.resources === "string") {
+    try {
+      return JSON.parse(data.resources).map(mapDiscoverResource);
+    } catch (error) {
+      console.error("Failed to parse data.resources as JSON string:", error);
+      return [];
+    }
+  }
+
+  if (Array.isArray(data.resources)) {
+    return data.resources.map(mapDiscoverResource);
+  }
+
+  console.warn("Unexpected format for data.resources:", data.resources);
+  return [];
+}
+
 // Helper function to fetch detailed metadata for a specific resource
 // async function fetchResourceMetadata(resourceId="302dcbef13614ac486fb260eaa1ca87c") {
 //   const url = `https://www.hydroshare.org/hsapi/resource/${resourceId}/scimeta/elements/`;
@@ -47,12 +116,7 @@ function convertAuthorToLastFirst(author) {
 
 async function fetchResource(id) {
   const url = `https://www.hydroshare.org/hsapi/resource/${encodeURIComponent(id)}/sysmeta`;
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Error fetching resources (status: ${response.status})`);
-  }
-  const data = await response.json();
-  return data;
+  return fetchJson(url, "resources");
 }
 
 // Helper function to fetch list of resources by group
@@ -73,13 +137,8 @@ async function fetchResourcesByGroup(groupid, fullTextSearch=undefined, pageNumb
     url += `&count=${encodeURIComponent(pageSize)}`;
   }
 
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Error fetching resources (status: ${response.status})`);
-  }
-
   // data.results is typically where the list of resources is stored.
-  const data = await response.json();
+  const data = await fetchJson(url, "resources");
 
   // Get resources and pagination info
   const returnData = {
@@ -240,11 +299,7 @@ async function fetchResourcesByKeyword(keyword, { page = 1, count = 15, fullText
     params.set('full_text_search', fullTextSearch);
   }
   const url = `https://www.hydroshare.org/hsapi/resource/?${params.toString()}`;
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Error fetching resources (status: ${response.status})`);
-  }
-  const data = await response.json();
+  const data = await fetchJson(url, "resources");
   // data.results is typically where the list of resources is stored.
   // If your actual structure differs, adjust accordingly.
   return data.results;
@@ -260,81 +315,9 @@ async function fetchResourcesByKeyword(keyword, { page = 1, count = 15, fullText
  * @returns {Promise<Array>} Array of resource objects
  */
 async function fetchResourcesBySearch(keyword, searchText, ascending=false, sortBy=undefined, author=undefined, pageNumber=1) {
-  // API Url with query parameters
-  let url = `https://www.hydroshare.org/discoverapi/?q=${encodeURIComponent(searchText)}&subject=${encodeURIComponent(keyword)}`;
-
-  // Add sort order parameter
-  if (ascending) {
-    url += `&asc=1`;
-  } else {
-    url += `&asc=-1`;
-  }
-
-  // Add sort parameter if provided
-  if (sortBy !== undefined) {
-    url += `&sort=${encodeURIComponent(sortBy)}`;
-  }
-
-  // Convert author name from "First Middle Last" to "Last, First Middle"
-  if (author !== undefined) {
-    author = convertAuthorToLastFirst(author);
-  }
-
-  // Add page number parameter (1-based indexing)
-  url += `&pnum=${pageNumber}`;
-
-  // Add filter parameter
-  const filter = {
-    author: [author].filter(a => a !== undefined),
-    subject: keyword.split(","),
-  };
-
-  url += `&filter=${encodeURIComponent(JSON.stringify(filter))}`;
-
-  // Fetch data from the API
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Error fetching resources (status: ${response.status})`);
-  }
-  const data = await response.json();
-
-  // Put resources into a corrected format
-  let resources;
-
-  if (typeof data.resources === "string") {
-    try {
-      resources = JSON.parse(data.resources);
-    } catch (e) {
-      console.error("Failed to parse data.resources as JSON string:", e);
-      resources = [];
-    }
-  } else if (Array.isArray(data.resources)) {
-    resources = data.resources;
-  } else {
-    console.warn("Unexpected format for data.resources:", data.resources);
-    resources = [];
-  }
-
-  let resourcesCorrected = [];
-
-  for (let i = 0; i < resources.length; i++) {
-    let resource = resources[i];
-    let resourceCorrected = {
-      resource_id: resource.short_id,
-      resource_title: resource.title,
-      authors: resource.authors,
-      resource_type: resource.type,
-      resource_url: 'https://www.hydroshare.org' + resource.link,
-      abstract: resource.abstract,
-      date_created: resource.created,
-      date_last_updated: resource.modified,
-    };
-
-    resourcesCorrected.push(resourceCorrected);
-  }
-
-  // Return the corrected resources
-  return resourcesCorrected;
+  const url = buildDiscoverApiUrl(keyword, searchText, ascending, sortBy, author, pageNumber);
+  const data = await fetchJson(url, "resources");
+  return parseDiscoverResources(data);
 }
 
 /**
@@ -348,87 +331,14 @@ async function fetchResourcesBySearch(keyword, searchText, ascending=false, sort
  * @returns {Promise<Object>} Object containing resources array and pagination metadata
  */
 async function fetchResourcesWithPaginationData(keyword, searchText, ascending=false, sortBy=undefined, author=undefined, pageNumber=1) {
-  // API Url with query parameters
-  let url = `https://www.hydroshare.org/discoverapi/?q=${searchText ? encodeURIComponent(searchText) : ''}&subject=${encodeURIComponent(keyword)}`;
-
-  // Add sort order parameter
-  if (ascending) {
-    url += `&asc=1`;
-  } else {
-    url += `&asc=-1`;
-  }
-
-  // Add sort parameter if provided
-  if (sortBy !== undefined) {
-    url += `&sort=${encodeURIComponent(sortBy)}`;
-  }
-
-  // Convert author name from "First Middle Last" to "Last, First Middle"
-  if (author !== undefined) {
-    author = convertAuthorToLastFirst(author);
-  }
-
-  // Add page number parameter (1-based indexing)
-  url += `&pnum=${pageNumber}`;
-
-  // Add filter parameter
-  const filter = {
-    author: [author].filter(a => a !== undefined),
-    subject: keyword.split(","),
-  };
-
-  url += `&filter=${encodeURIComponent(JSON.stringify(filter))}`;
-
-  // Fetch data from the API
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Error fetching resources (status: ${response.status})`);
-  }
-  const data = await response.json();
-
-  // Put resources into a corrected format
-  let resources;
-
-  if (pageNumber > data.pagecount) {
-    resources = [];
-  } else {
-    if (typeof data.resources === "string") {
-        try {
-          resources = JSON.parse(data.resources);
-        } catch (e) {
-          console.error("Failed to parse data.resources as JSON string:", e);
-        resources = [];
-      }
-    } else if (Array.isArray(data.resources)) {
-      resources = data.resources;
-    } else {
-      console.warn("Unexpected format for data.resources:", data.resources);
-      resources = [];
-    }
-  }
-
-  let resourcesCorrected = [];
-
-  for (let i = 0; i < resources.length; i++) {
-    let resource = resources[i];
-    let resourceCorrected = {
-      resource_id: resource.short_id,
-      resource_title: resource.title,
-      authors: resource.authors,
-      resource_type: resource.type,
-      resource_url: 'https://www.hydroshare.org' + resource.link,
-      abstract: resource.abstract,
-      date_created: resource.created,
-      date_last_updated: resource.modified,
-    };
-
-    resourcesCorrected.push(resourceCorrected);
-  }
+  const url = buildDiscoverApiUrl(keyword, searchText, ascending, sortBy, author, pageNumber);
+  const data = await fetchJson(url, "resources");
+  const resources = parseDiscoverResources(data, { pageNumber });
 
   // Return the corrected resources with pagination data
   return {
-    resources: resourcesCorrected,
-    resourcesLength: resourcesCorrected.length,
+    resources,
+    resourcesLength: resources.length,
     resourceCountTotal: data.rescount,
     pageCount: data.pagecount,
     pageSize: data.perpage,
@@ -449,42 +359,8 @@ async function fetchResourcesWithPaginationData(keyword, searchText, ascending=f
  * @returns {Promise<Object>} An object containing pagination data
  */
 async function fetchKeywordPageData(keyword, searchText, ascending=false, sortBy=undefined, author=undefined) {
-  // API Url with query parameters
-  let url = `https://www.hydroshare.org/discoverapi/?q=${encodeURIComponent(searchText)}&subject=${encodeURIComponent(keyword)}`;
-
-  // Add sort order parameter
-  if (ascending) {
-    url += `&asc=1`;
-  } else {
-    url += `&asc=-1`;
-  }
-
-  // Add sort parameter if provided
-  if (sortBy !== undefined) {
-    url += `&sort=${encodeURIComponent(sortBy)}`;
-  }
-
-  // Convert author name from "First Middle Last" to "Last, First Middle"
-  if (author !== undefined) {
-    author = convertAuthorToLastFirst(author);
-  }
-
-  // Add page number parameter (1-based indexing)
-  url += `&pnum=${1}`;
-
-  // Add filter parameter
-  const filter = {
-    author: [author].filter(a => a !== undefined),
-    subject: keyword.split(","),
-  };
-
-  url += `&filter=${encodeURIComponent(JSON.stringify(filter))}`;
-
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Error fetching resources (status: ${response.status})`);
-  }
-  const data = await response.json();
+  const url = buildDiscoverApiUrl(keyword, searchText, ascending, sortBy, author, 1);
+  const data = await fetchJson(url, "resources");
 
   return {
     resourceCount: data.rescount,
@@ -571,26 +447,12 @@ async function fetchResourcesByKeywordsIntersection(keywords = [], options = {})
 
 async function fetchResourceCustomMetadata(resourceId) {
   const url = `https://www.hydroshare.org/hsapi/resource/${resourceId}/scimeta/custom/`;
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(
-      `Error fetching metadata for resource ${resourceId} (status: ${response.status})`
-    );
-  }
-  const data = await response.json();
-  return data;
+  return fetchJson(url, `metadata for resource ${resourceId}`);
 }
 
 async function fetchResourceMetadata(resourceId) {
   const url = `https://www.hydroshare.org/hsapi/resource/${resourceId}/scimeta/elements/`;
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(
-      `Error fetching scimeta elements for resource ${resourceId} (status: ${response.status})`
-    );
-  }
-  const data = await response.json();
-  return data;
+  return fetchJson(url, `scimeta elements for resource ${resourceId}`);
 }
 
 // Fetch the curated resources first (from the "parent" resource).

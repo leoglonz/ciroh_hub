@@ -1,4 +1,105 @@
 {
+
+		"January 2026 Update": [
+			{
+			"type": "update",
+			"title": "CIROH Hub",
+			"link": "",
+			"description": "📣 Development is underway for CIROH Hub—an integrated CIROH DocuHub and Portal experience. Coming February 2026! An announcement banner in DocuHub and Portal linking to an FAQ. Join the Community Resources Working Group to share your input and feedback.",
+			"contributors": 0
+   			},
+            {
+			"type": "R2OHC",
+			"title": "CIROH R2OHC Platform (Research to Operations Hybrid Cloud Platform)",
+			"links": [
+				"https://github.com/orgs/CIROH-UA/projects/10"
+			],
+			"description":"Latest IT requests and updates for the CIROH R2OHC Platform can be found on the [R2OHC Project Board](https://github.com/orgs/CIROH-UA/projects/10).", 
+			"release_date": "01/25/2026",
+			"contributors": 0
+			},
+            {
+			"type": "NGIAB Ecosystem",
+			"title": "NGIAB Ecosystem Project Board",
+			"links": [
+				"https://github.com/orgs/CIROH-UA/projects/11"
+			],
+			"description":"Stay updated with the latest features, bug fixes, and improvements across the NGIAB ecosystem by visiting the [NGIAB Ecosystem Project Board](https://github.com/orgs/CIROH-UA/projects/11).", 
+			"release_date": "01/25/2026",
+			"contributors": 0
+			},
+            {
+			"type": "NRDS",
+			"title": "NextGen Research Datastream (NRDS) Project Board",
+			"links": [
+				"https://github.com/orgs/CIROH-UA/projects/2"
+			],
+            "description":"Stay updated with the latest features, bug fixes, and improvements across the NGIAB ecosystem by visiting the [NGIAB Ecosystem Project Board](https://github.com/orgs/CIROH-UA/projects/11).", 
+			"release_date": "01/25/2026",
+			"contributors": 0
+			},
+            {
+			"type": "NGIAB NRDS Website (v1.0.0)",
+			"title": "NGIAB + NRDS Product portfolio website",
+			"links": [
+				"https://github.com/CIROH-UA/ngiab-website/releases/tag/v1.0.0"
+			],
+			"description":"The NGIAB NRDS Website v1.0.0 is live! Visit [https://ngiab.ciroh.org/](https://ngiab.ciroh.org/) to explore all NGIAB and NRDS tools, documentation, and resources all in one place. Visit [https://ngiab.ciroh.org/#/nrds](https://ngiab.ciroh.org/#/nrds) to learn more about NextGen Research DataStream.", 
+			"release_date": "01/25/2026",
+			"contributors": 0
+			},
+			{
+			"type": "NGIAB",
+			"title": "NGIAB-data-preprocess",
+			"links": [
+				"https://github.com/CIROH-UA/NGIAB_data_preprocess/releases/tag/v4.6.8",
+				"https://github.com/CIROH-UA/NGIAB_data_preprocess/releases/tag/v4.6.7"
+			],
+			"description":"New releases (v4.6.7 and v4.6.8) include improvements to data handling and pipeline efficiency in NGIAB data preprocessing workflows.", 
+			"release_date": "01/25/2026",
+			"contributors": 0
+			},
+			{
+			"type": "NGIAB",
+			"title": "NGIAB-CloudInfra",
+			"link": "",
+            "description": "Want to integrate a model into NGIAB? Use the [Model Integration Template](https://github.com/CIROH-UA/NGIAB-CloudInfra/issues/new?template=model_integration_request.md) to submit your request. See the [Add dHBV2.0 MTS (hourly)](https://github.com/CIROH-UA/NGIAB-CloudInfra/issues/385) as an example.",
+            "release_date": "",
+			"contributors": 0
+			},			
+			{
+			"type": "NRDS",
+			"title": "ForcingProcessor (v1.3.0)",
+			"link": "https://github.com/CIROH-UA/forcingprocessor/releases/tag/v1.3.0",
+			"description":"This release of forcingprocessor contains a major new feature! Checkout [here](https://github.com/CIROH-UA/forcingprocessor/releases/tag/v1.3.0).",
+			"release_date": "01/29/2026",
+			"contributors": 0
+			},
+			{
+			"type": "NRDS",
+			"title": "DataStreamCLI (v1.3.0)",
+			"link": "https://github.com/CIROH-UA/datastreamcli/releases/tag/v1.3.0",
+			"description":"This release focus on transformations to v2.2 hydrofabric variables used for calculating model variables in BMI config files.",
+			"release_date": "01/29/2026",
+			"contributors": 0
+			},
+            {
+			"type": "NRDS",
+			"title": "Ngen-DataStream",
+			"link": "https://github.com/CIROH-UA/ngen-datastream/releases/tag/v2.1.0",
+			"description":"NextGen Research DataStream runs hourly on AWS! Now featuring LSTM DataStream (VPU 09), CFE NOM DataStream (all VPUs and Routing-Only Datastream (VPU 03W). View [latest status](https://github.com/CIROH-UA/ngen-datastream/blob/main/docs/nrds/STATUS_AND_METADATA.md), explore parameters at [datastream.ciroh.org](https://datastream.ciroh.org/index.html), and contribute via the [Parameter Update Template](https://github.com/CIROH-UA/ngen-datastream/issues/new?template=nrds-parameter-proposal.md).",
+			"release_date": "",
+			"contributors": 0
+			},
+            {
+			"type": "NRDS",
+			"title": "NRDS Visualizer (nrds-client) (v1.1.0)",
+			"link": "https://github.com/CIROH-UA/nrds-client/releases/tag/v1.1.0",
+			"description":"The NRDS Visualizer is now publicly available at [https://nrds.ciroh.org/](https://nrds.ciroh.org/)! Latest release info [here](https://github.com/CIROH-UA/nrds-client/releases/tag/v1.1.0). Explore NextGen Research DataStream runs in action.",
+			"release_date": "",
+			"contributors": 0
+			}
+		],
 		"November 2025 Update": [
 			{
 				"type": "NGIAB",
@@ -106,8 +207,8 @@
 			},
 			{
 			"type": "update",
-			"title": "CIROH Hub",
-			"description": "CIROH Hub has been updated! This month's updates feature an overhaul of the [Infrastructure Access page](/docs/services/access), making it easier than ever to request access to CIROH CyberInfrastructure, alongside a [new blog post](/blog/ciroh-psu-collab) highlighting collaboration between the Alabama Water Institute and Pennsylvania State University.",
+			"title": "CIROH DocuHub",
+			"description": "DocuHub has been updated! This month's updates feature an overhaul of the [Infrastructure Access page](/docs/services/access), making it easier than ever to request access to CIROH CyberInfrastructure, alongside a [new blog post](/blog/ciroh-psu-collab) highlighting collaboration between the Alabama Water Institute and Pennsylvania State University.",
 			"link": "release-notes/v20251103"
 			},
 			{
@@ -362,20 +463,20 @@
 			},
 			{
 				"type": "news",
-				"title": "Community FIM Documentation on CIROH Hub",
-				"description": "📢 Both FIM as a service (FIMserv) and FIM Evaluation Framework (FIMPEF) documentation now available on CIROH Hub!! Go to Products tab -> Community Flood Inundation Mapping",
+				"title": "Community FIM Documentation on DocuHub",
+				"description": "📢 Both FIM as a service (FIMserv) and FIM Evaluation Framework (FIMPEF) documentation now available on DocuHub!! Go to Products tab -> Community Flood Inundation Mapping",
 				"link": "/docs/products/Community%20Flood%20Inundation%20Mapping/FIM%20as%20a%20Service/"
 			},
 			{
 				"type": "news",
 				"title": "CIROH Portal New Look!!",
-				"description": "📢 BYU Team released newer version of CIROH Portal using docusaurus framework. This brings consistency with CIROH Hub!",
+				"description": "📢 BYU Team released newer version of CIROH Portal using docusaurus framework. This brings consistency with CIROH DocuHub!",
 				"link": "https://portal.ciroh.org/"
 			},
 			{
 				"type": "news",
-				"title": "CIROH Hub Contribute page Updated",
-				"description": "📢 For more ways to contribute to CIROH Hub. Read below",
+				"title": "DocuHub Contribute page Updated",
+				"description": "📢 For more ways to contribute to DocuHub. Read below",
 				"link": "/docs/contribute"
 			}
 	],
@@ -498,7 +599,7 @@
 		{
 			"type": "news",
 			"title": "Best Practice Guide for NextGen Framework",
-			"description": "Technical guidance for the inclusion of models/modules in the NextGen Water Resources Modeling Framework is now available in CIROH Hub.",
+			"description": "Technical guidance for the inclusion of models/modules in the NextGen Water Resources Modeling Framework is now available in DocuHub.",
 			"link": "https://docs.ciroh.org/docs/policies/NextGen/"
 		},  
 		{
@@ -755,7 +856,7 @@
 		{
 			"type": "news",
 			"title": "NextGen In A Box (NGIAB)",
-			"description": "We have made some improvements to NGIAB: 10 PRs merged. Sample input data updated to use AWI_003(with new data provider names). Boost upgraded to v1.79. Self-hosted Runner can start and stop automatically with GitHub Actions. NGIAB image can run in auto mode. Geopackage support added. Documentation available at CIROH Hub",
+			"description": "We have made some improvements to NGIAB: 10 PRs merged. Sample input data updated to use AWI_003(with new data provider names). Boost upgraded to v1.79. Self-hosted Runner can start and stop automatically with GitHub Actions. NGIAB image can run in auto mode. Geopackage support added. Documentation available at CIROH DocuHub",
 			"link": " https://docs.ciroh.org/docs/products/ngiab/distributions/ngiab-docker"
 		},
 		{

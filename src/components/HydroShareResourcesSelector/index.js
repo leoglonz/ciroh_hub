@@ -203,10 +203,10 @@ export default function HydroShareResourcesSelector({ keyword = "nwm_portal_app,
       <div className={clsx("container", "margin-bottom--lg")}>
         {/* counter */}
       <div className={styles.counterRow}>
-        {loading || fetching.current ? "Fetching Resources..." : (
+        {loading || fetching.current ? "Fetching " + (keyword.includes('app') ? 'Apps' : keyword.includes('module') ? 'Courses' : 'Resources') + "..." : (
           <>
             Showing&nbsp;<strong>{resources.filter(r => !r.resource_id.startsWith('placeholder-')).length}</strong>
-            &nbsp;{ keyword == 'nwm_portal_app' ? 'Apps' : keyword == 'nwm_portal_module' ? 'Courses' : 'Resources' }
+            &nbsp;{ keyword.includes('app') ? 'Apps' : keyword.includes('module') ? 'Courses' : 'Resources' }
             &nbsp;of <strong>{resources.filter(r => !r.resource_id.startsWith('placeholder-')).length}</strong>
           </>
         )}

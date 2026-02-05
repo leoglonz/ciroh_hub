@@ -24,7 +24,7 @@ const investigators = [
   {
     name: "Arpita Patel",
     role: "Advancing Community NextGen and NextGen In A Box (NGIAB) - Paving the Pathway to Operations",
-    image: "/img/teamMember1.png",
+    image: "/img/profiles/Arpita_Patel.png",
     initial: "AP",
     link: "https://awi.ua.edu/directory/arpita-patel/",
     orgName: "The University of Alabama",
@@ -53,7 +53,7 @@ const investigators = [
 export default function PrincipalInvestigators() {
   return (
     <section className="team-section">
-      <h2 className="team-title tw-mt-8">Principle Investigators</h2>
+      <h2 className="team-title tw-mt-8">Principal Investigators</h2>
       <div className="team-divider"></div>
 
       <div className="team-grid-list">

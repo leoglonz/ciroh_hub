@@ -8,13 +8,13 @@ const team = [
     name: "Arpita Patel",
     role: "Assistant Director of DevOps and IT",
     image: "/img/profiles/Arpita_Patel.png",
-    linkedin: "https://www.linkedin.com/in/example-arpita"
+    linkedin: "https://www.linkedin.com/in/arpita0911patel/"
   },
   {
     name: "Benjamin Lee",
     role: "DevOps Engineer",
     image: "/img/profiles/Ben_Lee.png",
-    linkedin: "https://www.linkedin.com/in/example-benjamin"
+    linkedin: "https://www.linkedin.com/in/seungchanlee/"
   },
   {
     name: "Giovanni Romero",
@@ -32,7 +32,7 @@ const team = [
     name: "Manjila Singh",
     role: "Graduate Research Assistant",
     image: "/img/profiles/Manjila_Singh.png",
-    linkedin: "https://www.linkedin.com/in/example-manjila"
+    linkedin: "https://www.linkedin.com/in/manjilasingh/"
   },
   {
     name: "Prajwal Halalae",
@@ -45,20 +45,18 @@ const team = [
     role: "Graduate Research Assistant",
     image: null,
     initial: "NM",
-    linkedin: ""
   },
   {
     name: "James Dolinar",
     role: "Software Engineer at Aquaveo",
     image: null,
     initial: "JD",
-    linkedin: ""
   }, 
   {
     name: "Zimuzo Ernest-Eze",
     role: "Undergraduate Student Assistant",
     image: "/img/profiles/Zimuzo_Ernest.png",
-    linkedin: "https://www.linkedin.com/in/example-zimuzo"
+    linkedin: "https://www.linkedin.com/in/zimuzoernesteze/"
   }, 
   
 ];

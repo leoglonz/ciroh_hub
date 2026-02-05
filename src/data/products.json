@@ -104,7 +104,7 @@
       "tags": ["Flood Mapping", "Research", "Methodology"],
       "iconUrl": "https://img.icons8.com/fluency/96/000000/flood.png",
       "links": {
-        "github": " https://github.com/sdmlua/FIMserv",
+        "github": "https://github.com/sdmlua/FIMserv",
         "docs": "/docs/products/portal/"
       }
     },

@@ -328,11 +328,13 @@ export default function Datasets({ community_id = 4 }) {
       <div className={clsx("container", "margin-bottom--lg")}>
         {/* Counter */}
         <div className={styles.counterRow}>
-          Showing&nbsp;
-          <strong>{getFilteredResourceCount()}</strong>
-          &nbsp;Datasets
-          {!loading && (
-            <> of <strong>{getTotalResourceCount()}</strong></>
+          {loading || fetching.current ? "Fetching Datasets..." : (
+            <>
+              Showing&nbsp;
+              <strong>{getFilteredResourceCount()}</strong>
+              &nbsp;Datasets
+              of <strong>{getTotalResourceCount()}</strong>
+            </>
           )}
         </div>
 

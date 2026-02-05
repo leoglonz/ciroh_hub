@@ -382,11 +382,13 @@ export default function Presentations({ community_id = 4 }) {
       <div className={clsx("container", "margin-bottom--lg")}>
         {/* Counter */}
         <div className={styles.counterRow}>
-          Showing&nbsp;
-          <strong>{getFilteredResourceCount()}</strong>
-          &nbsp;Presentations
-          {!loading && (
-            <> of <strong>{getTotalResourceCount()}</strong></>
+          {loading || fetching.current ? "Fetching Presentations..." : (
+            <>
+              Showing&nbsp;
+              <strong>{getFilteredResourceCount()}</strong>
+              &nbsp;Presentations
+              of <strong>{getTotalResourceCount()}</strong>
+            </>
           )}
         </div>
 

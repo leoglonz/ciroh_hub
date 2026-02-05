@@ -213,10 +213,14 @@ export default function Publications({ apiKey, groupId }) {
       <div className={styles.container}>
         {/* counter */}
         <div className={styles.counterRow}>
-          Loaded&nbsp;
-          <strong>{displayedItems.filter(i => !i.placeholder).length}</strong>
-          &nbsp;publications
-          {totalItems !== null && <> of <strong>{totalItems}</strong></>}
+          {loading || fetching.current ? "Fetching Publications..." : (
+            <>
+              Loaded&nbsp;
+              <strong>{displayedItems.filter(i => !i.placeholder).length}</strong>
+              &nbsp;publications
+              {totalItems !== null && <> of <strong>{totalItems}</strong></>}
+            </>
+          )}
         </div>
 
         {/* form */}

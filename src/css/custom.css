@@ -266,7 +266,7 @@
 
 .footer__attrib {
   font-size: 1.2rem;
-  color: var(--ifm-heading-color);
+  /* color: var(--ifm-heading-color); */
 }
 
 .footer__funding {

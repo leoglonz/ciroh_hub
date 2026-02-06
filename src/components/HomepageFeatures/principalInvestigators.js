@@ -6,16 +6,16 @@ const investigators = [
   {
     name: "Steven Burian",
     role: "Community Water Model Infrastructure, Stewardship, and Integration",
-    image: "https://eng.ua.edu/wp-content/uploads/2021/12/2201001_BH_054_Steve_Burian.jpg",
-    initial: "SB",
+    image: "/img/profiles/Steven_Burian.jpg",
+    initial: "SB", 
     link: "https://eng.ua.edu/eng-directory/dr-steven-burian/",
     orgName: "The University of Alabama",
     orgLogo: "/img/logos/uni/UAlogo.png",
-  },
+  }, 
   {
     name: "Purushotham Bangalore",
     role: "Community Accessible Development: Nextgen Water Resources Modeling Framework in the CIROH Research to Operations Hybrid Cloud",
-    image: "https://eng.ua.edu/wp-content/uploads/2021/09/2209032_BH_117_Purushotham_Bangalore-e1666793083411.jpg",
+    image: "/img/profiles/Purushotham_Bangalore.jpg",
     initial: "PB",
     link: "https://eng.ua.edu/eng-directory/dr-purushotham-bangalore/",
     orgName: "The University of Alabama",
@@ -24,7 +24,7 @@ const investigators = [
   {
     name: "Arpita Patel",
     role: "Advancing Community NextGen and NextGen In A Box (NGIAB) - Paving the Pathway to Operations",
-    image: "/img/teamMember1.png",
+    image: "/img/profiles/Arpita_Patel.png",
     initial: "AP",
     link: "https://awi.ua.edu/directory/arpita-patel/",
     orgName: "The University of Alabama",
@@ -32,12 +32,21 @@ const investigators = [
   },
   {
     name: "Dan Ames",
-    role: "Turning Research into Actionable Information for Operational Impact by Advancing NOAA's National Cyberinfrastructure, CIROH Portal, and Web and Mobile Apps",
-    image: "https://ciroh.ua.edu/wp-content/uploads/2023/02/Dan-Ames-photo.jpg",
+    role: "Turning Research into Actionable Information for Operational Impact by Advancing NOAA's National Cyberinfrastructure, CIROH Portal, and Web and Mobile Apps",
+    image: "/img/profiles/Dan_Ames.jpg",
     initial: "DA",
     link: "https://cce.byu.edu/directory/dan-ames",
     orgName: "Brigham Young University",
-    orgLogo: "https://th.bing.com/th/id/R.f1cb7dee44fd82870c0e58ba859a078e?rik=opVcBH5Lqtyl9w&riu=http%3a%2f%2flogonoid.com%2fimages%2fbyu-logo.png&ehk=9Ob%2bcxsV7xRkYYmzuKx0ac0w3A3TELDo4ETKBjdbhiI%3d&risl=&pid=ImgRaw&r=0",
+    orgLogo: "/img/logos/uni/byu.png",
+  },
+  {
+    name: "Jeffrey C. Carver",
+    role: "Associate Department Head for Graduate Studies\nDepartment of Computer Science",
+    image: "/img/profiles/Jeff_Carver.jpg",
+    initial: "JC",
+    link: "https://carver.cs.ua.edu/",
+    orgName: "University of Alabama",
+    orgLogo: "/img/logos/uni/UAlogo.png",
   },
   {
     name: "Jeffrey C. Carver",
@@ -53,7 +62,7 @@ const investigators = [
 export default function PrincipalInvestigators() {
   return (
     <section className="team-section">
-      <h2 className="team-title tw-mt-8">Principle Investigators</h2>
+      <h2 className="team-title tw-mt-8">Principal Investigators</h2>
       <div className="team-divider"></div>
 
       <div className="team-grid-list">

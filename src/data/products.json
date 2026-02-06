@@ -5,7 +5,11 @@
       "name": "NextGen In A Box",
       "description": "A comprehensive containerized solution for NextGen framework deployment, providing easy setup and management of hydrological modeling workflows.",
       "category": "Modeling Framework",
-      "tags": ["Docker", "NextGen", "Containerization"],
+      "tags": [
+        "Docker",
+        "NextGen",
+        "Containerization"
+      ],
       "iconUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
       "links": {
         "github": "https://github.com/ciroh-ua/ngiab-cloudinfra",
@@ -19,7 +23,11 @@
       "name": "National Water Model",
       "description": "Advanced hydrologic modeling system that simulates observed and forecast streamflow over the continental United States.",
       "category": "Water Modeling",
-      "tags": ["NWM", "Forecasting", "Streamflow"],
+      "tags": [
+        "NWM",
+        "Forecasting",
+        "Streamflow"
+      ],
       "iconUrl": "https://img.icons8.com/fluency/96/000000/water.png",
       "links": {
         "docs": "/docs/products/national-water-model"
@@ -30,7 +38,11 @@
       "name": "Hydrofabric",
       "description": "Geospatial fabric for hydrological modeling providing standardized catchment and flowline representations for water resource applications.",
       "category": "Geospatial Tools",
-      "tags": ["GIS", "Catchments", "Hydrology"],
+      "tags": [
+        "GIS",
+        "Catchments",
+        "Hydrology"
+      ],
       "iconUrl": "https://img.icons8.com/fluency/96/000000/geography.png",
       "links": {
         "github": "https://github.com/NOAA-OWP/hydrofabric",
@@ -43,7 +55,11 @@
       "name": "NextGen Research Datastream",
       "description": "Real-time data streaming platform for NextGen framework, enabling efficient data ingestion and processing for hydrological research.",
       "category": "Data Management",
-      "tags": ["Data Stream", "Real-time", "Research"],
+      "tags": [
+        "Data Stream",
+        "Real-time",
+        "Research"
+      ],
       "iconUrl": "https://img.icons8.com/fluency/96/000000/data-configuration.png",
       "links": {
         "github": "https://github.com/CIROH-UA/ngen-datastream",
@@ -55,7 +71,11 @@
       "name": "Evaluation Tools",
       "description": "Comprehensive suite of model evaluation and validation tools for hydrological forecasting performance assessment.",
       "category": "Analysis Tools",
-      "tags": ["Evaluation", "Validation", "Metrics"],
+      "tags": [
+        "Evaluation",
+        "Validation",
+        "Metrics"
+      ],
       "iconUrl": "https://img.icons8.com/fluency/96/000000/analytics.png",
       "links": {
         "github": "https://github.com/ciroh-ua/evaluation-tools",
@@ -67,7 +87,11 @@
       "name": "Snow Sensing and Modeling Tools",
       "description": "Advanced tools for snow water equivalent estimation, snowpack monitoring, and snow-related hydrological modeling applications.",
       "category": "Snow Science",
-      "tags": ["Snow", "SWE", "Remote Sensing"],
+      "tags": [
+        "Snow",
+        "SWE",
+        "Remote Sensing"
+      ],
       "iconUrl": "https://img.icons8.com/fluency/96/000000/snow.png",
       "links": {
         "docs": "/docs/products/snow-tools/"
@@ -78,7 +102,11 @@
       "name": "Machine Learning for Hydrology Course",
       "description": "Comprehensive online course covering machine learning algorithms and AI-powered solutions for hydrological prediction and water resource management.",
       "category": "AI/ML",
-      "tags": ["Machine Learning", "AI", "Education"],
+      "tags": [
+        "Machine Learning",
+        "AI",
+        "Education"
+      ],
       "iconUrl": "https://img.icons8.com/fluency/96/000000/artificial-intelligence.png",
       "links": {
         "docs": "/docs/products/ml-ai",
@@ -90,7 +118,11 @@
       "name": "Visualization and Analysis Tools",
       "description": "Interactive visualization platform for hydrological data analysis, featuring customizable dashboards and analytical workflows.",
       "category": "Visualization",
-      "tags": ["Visualization", "Dashboard", "Analytics"],
+      "tags": [
+        "Visualization",
+        "Dashboard",
+        "Analytics"
+      ],
       "iconUrl": "https://img.icons8.com/fluency/96/000000/combo-chart.png",
       "links": {
         "docs": "/docs/products/visualization/"
@@ -101,7 +133,11 @@
       "name": "Flood Inundation Mapping Methods",
       "description": "Comprehensive research publication on community-driven flood mapping methodologies for real-time inundation prediction and risk assessment.",
       "category": "Flood Management",
-      "tags": ["Flood Mapping", "Research", "Methodology"],
+      "tags": [
+        "Flood Mapping",
+        "Research",
+        "Methodology"
+      ],
       "iconUrl": "https://img.icons8.com/fluency/96/000000/flood.png",
       "links": {
         "github": "https://github.com/sdmlua/FIMserv",
@@ -113,7 +149,11 @@
       "name": "CIROH Hydrology Datasets",
       "description": "Curated collection of hydrological datasets including streamflow, precipitation, and water quality data for research and educational purposes.",
       "category": "Data Resources",
-      "tags": ["Datasets", "Open Data", "Research"],
+      "tags": [
+        "Datasets",
+        "Open Data",
+        "Research"
+      ],
       "iconUrl": "https://img.icons8.com/fluency/96/000000/database.png",
       "links": {
         "docs": "/datasets/"

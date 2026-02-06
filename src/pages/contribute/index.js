@@ -14,7 +14,7 @@ export default function Contribute() {
   const zoteroLogin = siteConfig?.customFields?.externalLinks?.zoteroLogin || 'https://www.zotero.org/user/login';
   const feedbackUrl = siteConfig?.customFields?.externalLinks?.feedbackForm || 'https://forms.office.com/r/5ww7qRWwwf';
   const addProductUrl = "https://github.com/CIROH-UA/ciroh_hub/issues/new?assignees=&labels=on-prem&projects=&template=product-request.md";
-  const blogIdeaUrl = siteConfig?.customFields?.blogIdeaUrl || 'https://github.com/CIROH-UA/ciroh-ua_website/issues/new?template=docuhub-blog-post.md';
+  const blogIdeaUrl = siteConfig?.customFields?.blogIdeaUrl || 'https://github.com/CIROH-UA/ciroh_hub/issues/new?template=docuhub-blog-post.md';
 
   return (
     <Layout
@@ -133,22 +133,7 @@ export default function Contribute() {
             </p>
           </div>
 
-          {/* Learn More – Full width card */}
-          <section className={styles.infoCardWide}>
-            <div className={styles.infoCardContent}>
-              <h2 className={styles.infoTitle}>Learn more about contributing</h2>
-              <p className={styles.infoText}>
-                Explore the CIROH Portal to see how products are curated and surfaced across
-                CIROH Hub and HydroShare, and how your contributions reach the community.
-              </p>
-            </div>
-            <div className={styles.infoActions}>
-              <a href={portalUrl} className={styles.infoButton}>
-                More about contributing →
-              </a>
-            </div>
-          </section>
-
+          
           {/* Call to Action */}
           <div className={styles.ctaSection}>
             <h2 className={styles.ctaTitle}>Questions or Need Help?</h2>

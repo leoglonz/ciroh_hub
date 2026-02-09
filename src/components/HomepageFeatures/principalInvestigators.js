@@ -48,15 +48,6 @@ const investigators = [
     orgName: "University of Alabama",
     orgLogo: "/img/logos/uni/UAlogo.png",
   },
-  {
-    name: "Jeffrey C. Carver",
-    role: "Associate Department Head for Graduate Studies\nDepartment of Computer Science",
-    image: "https://eng.ua.edu/wp-content/uploads/2020/01/2302031_BH_043_Jeffrey_Carver-e1745355760760.jpg",
-    initial: "JC",
-    link: "https://carver.cs.ua.edu/",
-    orgName: "University of Alabama",
-    orgLogo: "/img/logos/uni/UAlogo.png",
-  },
 ];
 
 export default function PrincipalInvestigators() {

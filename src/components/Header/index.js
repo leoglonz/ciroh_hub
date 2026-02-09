@@ -5,41 +5,6 @@ import Link from '@docusaurus/Link';
 // export default function Header({ title,image,  tagline, buttons }) {
 
 
-//   return (
-//     <header className={clsx(styles.heroBanner)}>
-//       <div className={clsx('container', styles.heroContainer)}>
-//         {image && (
-//             <img src={image} alt={title} className={styles.heroImage} />
-//         )}
-//         <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
-//           {title}
-//         </Heading>
-
-//         <p className={clsx('hero__subtitle', styles.heroSubtitle)}>{tagline}</p>
-                
-//         {buttons && buttons.length > 0 && (
-//           <div className={styles.buttons}>
-//             {buttons.map((button, index) => (
-//               <a
-//                 key={index}
-//                 href={button.href}
-//                 className={clsx(
-//                   'button',
-//                   styles.button,
-//                   button.primary ? styles.buttonPrimary : styles.buttonSecondary
-//                 )}
-//               >
-//                 {button.label}
-//               </a>
-//             ))}
-//           </div>
-//         )}
-//       </div>
-//     </header>
-//   );
-// }
-
-
 export default function Header({ title, tagline, buttons }) {
   const { colorMode } = useColorMode();
   const isDarkTheme = colorMode === 'dark';
@@ -47,11 +12,11 @@ export default function Header({ title, tagline, buttons }) {
     <header
       className={clsx(
         styles.heroBanner,
-        'tw-relative tw-overflow-hidden tw-min-svh tw-flex tw-items-center'
+        'tw-relative tw-overflow-hidden tw-flex tw-items-center'
       )}
     >
       {/* Content container */}
-      <div className="tw-relative tw-z-20 tw-container tw-mx-auto tw-px-10 lg:tw-pl-28 tw-py-20">
+      <div className="tw-relative tw-z-20 tw-container tw-mx-auto tw-px-10 lg:tw-pl-28 tw-py-10">
         <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-20 lg:tw-gap-28 tw-items-center">
 
           {/* LEFT SIDE — TEXT */}
@@ -63,7 +28,7 @@ export default function Header({ title, tagline, buttons }) {
                   'tw-text-5xl sm:tw-text-6xl lg:tw-text-7xl tw-font-bold tw-mb-4'
                 )}
               >
-                <span className="tw-text-blue-800 dark:tw-text-white">{title}</span>
+                <span className="tw-mt-6 tw-text-5xl sm:tw-text-6xl lg:tw-text-7xl tw-font-bold tw-leading-tight tw-text-cyan-700 dark:tw-text-cyan-300">{title}</span>
               </h1>
 
 
@@ -71,7 +36,7 @@ export default function Header({ title, tagline, buttons }) {
                 className={clsx(
                   styles.heroSubtitle,
                   'tw-text-xl sm:tw-text-2xl lg:tw-text-2xl tw-font-light tw-mb-6',
-                  isDarkTheme ? 'tw-text-slate-200' : 'tw-text-blue-900'
+                  // isDarkTheme ? 'tw-text-white-200' : 'tw-text-white-900'
                 )}
               >
                 {tagline}

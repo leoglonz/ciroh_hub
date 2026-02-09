@@ -81,19 +81,15 @@ function DatasetsPageContent({ contributeUrl, docsUrl }) {
   return (
     <>
       {/* Hero */}
-      <section className="tw-relative tw-z-20 tw-overflow-hidden tw-pt-36 tw-pb-36">
+      <section className="tw-relative tw-z-20 tw-overflow-hidden tw-pt-8 tw-pb-16">
         <div className="tw-absolute tw-inset-0 tw-pointer-events-none tw-overflow-hidden" style={{ zIndex: 0 }}>
           <ConstellationCanvas isDarkTheme={isDarkTheme} />
         </div>
         <div className="tw-absolute tw-inset-0 tw-bg-gradient-to-b tw-from-cyan-500/10 tw-via-transparent tw-to-transparent" />
         <div className="tw-relative tw-z-10 tw-mx-auto tw-max-w-7xl tw-px-4 sm:tw-px-6 lg:tw-px-8">
-          <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-12 tw-items-center">
+          <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 sm:tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-12 tw-items-center">
             <div>
-              <div className="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-border tw-border-cyan-500/30 tw-bg-cyan-500/10 tw-px-4 tw-py-2 tw-text-xs tw-font-semibold tw-tracking-wide tw-text-cyan-700 dark:tw-text-cyan-300">
-                Data Hub
-              </div>
-
-              <h1 className="tw-mt-6 tw-text-5xl sm:tw-text-6xl lg:tw-text-7xl tw-font-bold tw-leading-tight tw-text-blue-900 dark:tw-text-white">
+              <h1 className="tw-mt-6 tw-text-5xl sm:tw-text-6xl lg:tw-text-7xl tw-font-bold tw-leading-tight tw-text-cyan-700 dark:tw-text-cyan-300">
                 Datasets
               </h1>
 
@@ -118,7 +114,7 @@ function DatasetsPageContent({ contributeUrl, docsUrl }) {
               </div>
             </div>
 
-            <div className="tw-flex tw-items-center tw-justify-end">
+            <div className="tw-flex tw-items-center tw-justify-center">
               <div className="tw-relative tw-w-72 sm:tw-w-80 tw-h-72 sm:tw-h-80">
                 <div
                   className={

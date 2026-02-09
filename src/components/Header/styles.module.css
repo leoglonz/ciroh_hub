@@ -28,8 +28,8 @@
 }
 .heroSubtitle {
   font-weight: 500;
-  margin-bottom: 5rem;
-  color: var(--ifm-color-primary);
+  margin-bottom: 1rem;
+  color: var(--ifm-color-secondary);
 }
 
 

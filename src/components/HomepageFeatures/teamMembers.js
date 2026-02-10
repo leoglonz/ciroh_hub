@@ -52,6 +52,7 @@ const team = [
     role: "Software Engineer at Aquaveo",
     image: null,
     initial: "JD",
+    github: "https://github.com/James-Dolinar"
   }, 
   {
     name: "Zimuzo Ernest-Eze",

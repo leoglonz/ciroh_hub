@@ -109,6 +109,9 @@ const ProductCards = ({ productsData }) => {
 
   return (
     <div className={styles.productsContainer}>
+
+      {/* "Add product" form isn't planned for this phase of the launch. Dummying this out for now. */}
+      {/*
       <div className={styles.productsHeader}>
         <button className={styles.addProductButton} onClick={handleAddProduct}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -117,6 +120,7 @@ const ProductCards = ({ productsData }) => {
           Add Your Product
         </button>
       </div>
+      */}
 
       <div className={styles.productsGrid}>
         {productsData.products.map((product) => (

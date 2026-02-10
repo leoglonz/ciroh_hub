@@ -146,7 +146,7 @@
   border-radius: 10px;
   color: #fff;
   background: linear-gradient(135deg, #b91c1c 0%, #c2410c 100%);
-  font-weight: 800;
+  font-weight: 700;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(185, 28, 28, 0.22);
 }
@@ -158,7 +158,11 @@
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
 }
-
+.resourceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
 .zoteroCard {
   background: var(--ifm-background-surface-color);
   border: 1px solid var(--ifm-color-emphasis-200);

@@ -7,7 +7,7 @@ tags: [CIROH, Products, Software]
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import ProductCards from '@site/src/components/Product/ProductCards'
 import productsData from '@site/src/data/products.json'
-
+import ContributeCallout from '@site/src/components/ContributeCallout'
 
 
 <div className="container">
@@ -17,5 +17,8 @@ import productsData from '@site/src/data/products.json'
       </div>
     </div>
 </div>
+
+<ContributeCallout />
+
 
 <ProductCards productsData={productsData} />

@@ -254,7 +254,7 @@ const config = {
             {
               type: "doc",
               docId: "products/intro",
-              label: "Docs",
+              label: "Resources",
               
             },
             {
@@ -292,7 +292,7 @@ const config = {
               ],
             },
             {
-            label: "Latest Updates",
+            label: "Updates",
             position: "left",
             items: [
               {

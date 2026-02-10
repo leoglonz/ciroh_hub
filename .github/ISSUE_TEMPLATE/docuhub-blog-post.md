@@ -1,6 +1,6 @@
 ---
 name: Blog post request
-about: This template is used to request for a new blog post to be added to the DocuHub Blog tab.
+about: This template is used to request for a new blog post to be added to the CIROH Hub Blog tab.
 title: 'Blog post request: (your title here)'
 labels: Feature
 assignees: ''

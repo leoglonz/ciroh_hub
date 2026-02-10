@@ -1,4 +1,4 @@
-import React from 'react';
+import {useEffect} from 'react';
 import Layout from '@theme/Layout';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './contribute.module.css';
@@ -10,12 +10,30 @@ export default function Contribute() {
   const { siteConfig } = useDocusaurusContext();
   const contactUrl = useBaseUrl('/contact');
   const portalUrl = useBaseUrl('/products/portal/');
-  const docsContribUrl = useBaseUrl('/docs/contribute');
+  const resourcesUrl = useBaseUrl('/resources');
   const zoteroLogin = siteConfig?.customFields?.externalLinks?.zoteroLogin || 'https://www.zotero.org/user/login';
   const feedbackUrl = siteConfig?.customFields?.externalLinks?.feedbackForm || 'https://forms.office.com/r/5ww7qRWwwf';
   const addProductUrl = "https://github.com/CIROH-UA/ciroh_hub/issues/new?assignees=&labels=on-prem&projects=&template=product-request.md";
   const blogIdeaUrl = siteConfig?.customFields?.blogIdeaUrl || 'https://github.com/CIROH-UA/ciroh_hub/issues/new?template=docuhub-blog-post.md';
+  const wgIntakeFormUrl = siteConfig?.customFields?.externalLinks?.wgIntakeForm || 'https://app.smartsheet.com/b/form/07569d6285f643c1a57fd18daab98f7e'; // TODO: Replace with actual WG intake form URL
 
+    useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      // Remove the # from the hash
+      const id = hash.replace('#', '');
+      // Wait a bit for the page to render
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          // Scroll to the element with offset for fixed header
+          const yOffset = -100; // Adjust this value based on your header height
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, []);
   return (
     <Layout
       title="Contribute to CIROH"
@@ -33,18 +51,20 @@ export default function Contribute() {
         </div>
 
         {/* Main Content */}
-        <div className="container" style={{ marginTop: '3rem', marginBottom: '3rem' }}>
+        <div className="container margin-vert--xl">
           {/* Mission Statement Callout (flat) */}
           <div className={styles.flatMissionText}>
             <p>
               Share your work where the community can find it. Upload your courses, presentations,
-              datasets, and apps to <a href={useBaseUrl('/resources')}>HydroShare</a> and they’ll be
+              datasets, and apps to <a href={useBaseUrl('/resources')}>HydroShare</a> and they'll be
               showcased right here in CIROH Hub for broader reach. Publish your papers to <a href={zoteroLogin} target="_blank" rel="noreferrer noopener">Zotero</a> and they'll appear here as part of CIROH's shared library.
             </p>
           </div>
 
           {/* Contribute to DocuHub */}
-          <section className={styles.brandCard}>
+          {/* Dummying this section out as potentially redundant. Restore if rpeferred. */}
+          {/*
+          <section className={clsx(styles.brandCard, "margin-vert--xl")}>
             <div className={styles.brandHeader}>
               <img
                 className={styles.brandLogo}
@@ -60,9 +80,6 @@ export default function Contribute() {
                   to the hydrologic science community.
                 </p>
               </div>
-              <div className={styles.brandTopActions}>
-                <a href={docsContribUrl} className={styles.cardButton}>Read contribution guide</a>
-              </div>
             </div>
             <div className={styles.brandActions}>
               <a href={addProductUrl} className={styles.addProductButton} target='_blank'>
@@ -74,17 +91,74 @@ export default function Contribute() {
                 Submit a blog idea
               </a>
             </div>
-          </section>
+          </section> */}
+
+          {/* Note: horizontal rules around Hydroshare have added margins for spacing */}
+          <hr className="margin-vert--xl" />
 
           {/* Contribute to HydroShare */}
           <HydroShareCard />
+          
+          <hr className="margin-top--xl" />
+
+          {/* Contribute to Resources Documentation */}
+          <section id="resources-documentation" className={clsx(styles.zoteroSection, "margin-vert--xl")}>
+            <div className={styles.zoteroHeader}>
+              <h2 className={styles.zoteroTitle}>Contribute to Resources Documentation</h2>
+              <p className={styles.zoteroSubtitle}>
+                Document your software or research product in the Resources section. Create a landing page 
+                where new users can discover your work, understand what it does, and find links to get started.
+              </p>
+            </div>
+
+            {/* Content guidance */}
+            <div className={styles.resourceGrid} style={{ justifyContent: 'center' }}>
+              <div className={styles.zoteroCard}>
+                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>📝</div>
+                <h4>What to include</h4>
+                <p>
+                  Create an overview of your product with a clear description, key features, and getting started 
+                  instructions. Include links to your GitHub repository, external documentation, or other resources. 
+                  You can also embed your GitHub README to display the markdown content directly.
+                </p>
+              </div>
+              <div className={styles.zoteroCard}>
+                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>📂</div>
+                <h4>Where to add your product</h4>
+                <p>
+                  Resources are organized into categories: Evaluation Tools, Data Management and Access Tools, 
+                  Machine Learning, AI, and Visualization Tools. Review existing categories to see where your 
+                  product fits best.
+                </p>
+              </div>
+              <div className={styles.zoteroCard}>
+                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>💬</div>
+                <h4>Need a new category?</h4>
+                <p>
+                  If your product doesn't fit existing categories, reach out to us or join the Community Research 
+                  Working Group call to discuss new categorization. We welcome suggestions to improve the structure.
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.zoteroActions} style={{ marginTop: '2rem' }}>
+              <a href={addProductUrl} target="_blank" rel="noreferrer noopener" className={styles.zoteroButton} style={{ background: "var(--ifm-color-primary-light)" }}>
+                Submit Your Product Documentation
+              </a>
+              <a href={contactUrl} className={styles.zoteroButton} style={{ marginLeft: '1rem', background: '#6c757d' }}>
+                Discuss Categories
+              </a>
+            </div>
+          </section>
+
+          <hr />
 
           {/* Contribute to Zotero Publications */}
-          <section className={styles.zoteroSection}>
+          <section className={clsx(styles.zoteroSection, "margin-vert--xl")}>
             <div className={styles.zoteroHeader}>
               <h2 className={styles.zoteroTitle}>Contribute your publications to Zotero</h2>
               <p className={styles.zoteroSubtitle}>
-                Help us keep CIROH’s publication library up to date. Sign in to Zotero, request access to the CIROH
+                Help us keep CIROH's publication library up to date. Sign in to Zotero, request access to the CIROH
                 group library, and add your papers, presentations, and reports.
               </p>
               <div className={styles.zoteroActions}>
@@ -124,8 +198,10 @@ export default function Contribute() {
             </div>
           </section>
 
+          <hr />
+
           {/* Mission Statement (original) - flat page text style */}
-          <div className={styles.flatMissionText}>
+          <div className={clsx(styles.flatMissionText, "margin-vert--xl")}>
             <p>
               Amplify your hydrologic work through community collaboration. Whether you're sharing
               existing resources or building new solutions, your contribution accelerates water
@@ -133,9 +209,33 @@ export default function Contribute() {
             </p>
           </div>
 
+          <hr />
+
+          {/* Join the Community Section */}
+          <section id="community-working-group" className={clsx(styles.brandCard, "margin-top--xl margin-bottom--lg")}>
+            <div className={styles.brandHeader}>
+              <div style={{ fontSize: '3rem', marginRight: '1.5rem' }}>👥</div>
+              <div className={styles.brandTitleWrap}>
+                <h3 className={styles.brandTitle}>Join the Community Resources Working Group</h3>
+                <p className={styles.brandSubtitle}>
+                  Have suggestions or questions about contributing to CIROH Hub? We're open to feedback and ready to help! 
+                  Join the Community Resources Working Group to discuss documentation improvements, share ideas, and 
+                  collaborate with fellow contributors. Fill out the intake form to join our working group and attend our calls.
+                </p>
+              </div>
+            </div>
+            <div className={styles.brandActions}>
+              <a href={wgIntakeFormUrl} className={styles.addProductButton} target='_blank' rel="noreferrer noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="img">
+                  <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M8.5 11a4 4 0 100-8 4 4 0 000 8zM20 8v6M23 11h-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                </svg>
+                Join Working Group
+              </a>
+            </div>
+          </section>
           
           {/* Call to Action */}
-          <div className={styles.ctaSection}>
+          <div className={clsx(styles.ctaSection, "margin-top--lg margin-bottom--xl")}>
             <h2 className={styles.ctaTitle}>Questions or Need Help?</h2>
             <p className={styles.ctaDescription}>
               Our team is here to help you get started with your contributions. 

@@ -222,7 +222,7 @@ const config = {
           title: "CIROH Hub",
           logo: {
             alt: "CIROH Logo",
-            src: "img/logos/docuhub.png",
+            src: "img/logos/ciroh-bgsafe.png",
           },
           items: [
             {

@@ -11,6 +11,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.set-outputs.outputs.environment }}
+      version: ${{ steps.set-outputs.outputs.version }}
       
     name: ${{ github.event.client_payload.env }} - Deploy ${{ github.event.client_payload.short_hash }} from ${{ github.event.client_payload.branch }}
     steps:
@@ -32,16 +35,6 @@ jobs:
           echo "Deploying version: ${{ github.event.client_payload.version }}"
           echo "Environment: ${{ github.event.client_payload.env }}"
           
-      - name: Display variable value
-        run: |
-          # Display value of variable
-          echo "My version value is $VERSION"
-
-      - name: Display variable value
-        run: |
-          # Display value of variable
-          echo "My environment value is $DEPLOY_ENV"
-          
       # https://github.com/marketplace/actions/download-workflow-artifact
       - name: Download a Build Artifact
         uses: dawidd6/action-download-artifact@v2.26.1
@@ -50,29 +43,22 @@ jobs:
           name: build-${{ env.DEPLOY_ENV }}
           path: ./build/
 
-      - name: Create and switch to a temporary deployment branch
-        run: |
-          git checkout -b temp-deploy-branch-$VERSION
-
-        # Determine if this is a staging or production deployment
-        # NOTE: Since we don't have a production repo set, production deployment will
-        # fail for now. Edit TARGET_REPO to fix.
       - name: Set deployment target
-        id: deployment-target
+        id: set-outputs
         run: |
           if [[ "$DEPLOY_ENV" == "production" ]]; then
             echo "ENVIRONMENT=production" >> $GITHUB_ENV
-            echo "TARGET_REPO=tbd" >> $GITHUB_ENV
-            echo "Deploying to PRODUCTION environment"
-            echo "(FIXME: No target repo available, the next few steps will likely fail!)"
+            echo "environment=production" >> $GITHUB_OUTPUT
+            echo "Deploying to PRODUCTION environment (current repo)"
           else
             echo "ENVIRONMENT=staging" >> $GITHUB_ENV
+            echo "environment=staging" >> $GITHUB_OUTPUT
             echo "TARGET_REPO=CIROH-UA/ciroh_hub_staging" >> $GITHUB_ENV
             echo "Deploying to STAGING environment"
           fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      # Might be possible to merge these into one function,
-      # but don't want to chance insecure handling of secrets.
+      # Staging: Deploy to target repo (keep existing behavior)
       - name: GitHub Pages deployment to staging
         uses: JamesIves/github-pages-deploy-action@v4.6.1
         if: ${{ env.ENVIRONMENT == 'staging' }}
@@ -82,20 +68,47 @@ jobs:
           folder: build
           repository-name: ${{ env.TARGET_REPO }}
 
-      - name: GitHub Pages deployment to production
-        uses: JamesIves/github-pages-deploy-action@v4.6.1
+      # Production: Upload pages artifact for deployment in current repo
+      - name: Upload pages artifact for production
         if: ${{ env.ENVIRONMENT == 'production' }}
+        uses: actions/upload-pages-artifact@v3
         with:
-          token: ${{ secrets.GH_PRODUCTION_TOKEN }}
-          branch: main
-          folder: build
-          repository-name: ${{ env.TARGET_REPO }}
-          
+          path: build
+
       - name: Post-deployment notification
         run: |
           if [[ "${{ env.ENVIRONMENT }}" == "production" ]]; then
-            echo "Production deployment completed successfully!"
+            echo "### Production build artifact uploaded! 🚀" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Production build artifact uploaded. Deployment to GitHub Pages will complete in the next job." >> $GITHUB_STEP_SUMMARY
           else
             echo "Staging deployment completed successfully!"
-            echo "To promote to production, create a tag with: git tag production-$VERSION && git push origin production-$VERSION"
+            echo "To deploy to production, manually trigger the workflow and select 'production'"
           fi
+
+  deploy-production:
+    name: Deploy Production to GitHub Pages
+    needs: deploy
+    if: needs.deploy.outputs.environment == 'production'
+    runs-on: ubuntu-latest
+    
+    permissions:
+      pages: write
+      id-token: write
+    
+    environment:
+      name: production
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Deployment Summary
+        run: |
+          echo "### Production Deployment Complete! 🚀" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Environment**: Production" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version**: ${{ needs.deploy.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **URL**: ${{ steps.deployment.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY

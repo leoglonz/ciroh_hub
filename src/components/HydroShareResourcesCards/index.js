@@ -12,7 +12,7 @@ function isPlaceholder(resource) {
 function splitAuthors(authors) {
     if (!authors || typeof authors !== 'string') return [];
     return authors
-        .split('🖊️')
+        .split('🖊')
         .map(a => a.trim())
         .filter(Boolean);
 }

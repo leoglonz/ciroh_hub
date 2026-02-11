@@ -249,6 +249,10 @@ const config = {
                   href: "/publications",
                   label: "Publications",
                 },
+                {
+                  href: "/notebooks",
+                  label: "Notebooks",
+                },
               ],
             },
             {

@@ -1,11 +1,11 @@
 import React, { useCallback, useMemo, useState } from "react";
+import Header from "@site/src/components/Header";
+import HydroShareResourcesSelector from "@site/src/components/HydroShareResourcesSelector";
 import { ConstellationCanvas } from '@site/src/components/ConstellationCanvas';
 import Layout from '@theme/Layout';
 import TechBox from "@site/src/components/TechBox";
-import HydroShareResourcesSelector from "@site/src/components/HydroShareResourcesSelector";
 import HydroShareLogo from '@site/static/img/logos/hydroshare-white.png';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import Header from "@site/src/components/Header";
 import { useColorMode } from '@docusaurus/theme-common';
 import StatsBar from "@site/src/components/StatsBar";
 
@@ -19,43 +19,45 @@ const items = [
   },
 ];
 
-export default function DatasetsPage() {
-  const contributeUrl = useBaseUrl('/contribute?current-contribution=datasets');
+export default function NoteBooksPage() {
+  const contributeUrl = useBaseUrl('/contribute?current-contribution=apps');
   const docsUrl = useBaseUrl('/docs/products/intro');
+  const defaultImage = 'https://ciroh-portal-static-data.s3.us-east-1.amazonaws.com/app_placeholder.png'
 
   return (
-    <Layout title="Datasets" description="CIROH Datasets">
-      <DatasetsPageContent
+    <Layout title="Apps" description="CIROH NoteBooks">
+      <NoteBooksPageContent
         contributeUrl={contributeUrl}
         docsUrl={docsUrl}
+        defaultImage={defaultImage}
       />
     </Layout>
   );
 }
 
-function DatasetsPageContent({ contributeUrl, docsUrl }) {
+function NoteBooksPageContent({ contributeUrl, docsUrl, defaultImage }) {
   const { colorMode } = useColorMode();
   const isDarkTheme = colorMode === 'dark';
 
-  const [datasets, setDatasets] = useState([]);
+  const [apps, setApps] = useState([]);
   const [statsLoading, setStatsLoading] = useState(true);
 
   const onResultsChange = useCallback((results, meta) => {
-    setDatasets(results);
+    setApps(results);
     setStatsLoading(Boolean(meta?.loading));
   }, []);
 
   const stats = useMemo(() => {
-    const totalDatasets = datasets.length;
+    const totalApps = apps.length;
 
     const categories = new Set(
-      datasets.map(d => d?.resource_type).filter(Boolean)
+      apps.map(a => a?.resource_type).filter(Boolean)
     ).size;
 
     const contributors = (() => {
       const set = new Set();
-      for (const dataset of datasets) {
-        const authors = typeof dataset?.authors === 'string' ? dataset.authors : '';
+      for (const app of apps) {
+        const authors = typeof app?.authors === 'string' ? app.authors : '';
         authors
           .split('🖊')
           .map(a => a.trim())
@@ -67,8 +69,8 @@ function DatasetsPageContent({ contributeUrl, docsUrl }) {
 
     const lastUpdated = (() => {
       let latest = null;
-      for (const dataset of datasets) {
-        const d = dataset?.date_last_updated ? new Date(dataset.date_last_updated) : null;
+      for (const app of apps) {
+        const d = app?.date_last_updated ? new Date(app.date_last_updated) : null;
         if (!d || Number.isNaN(d.getTime())) continue;
         if (!latest || d > latest) latest = d;
       }
@@ -80,8 +82,8 @@ function DatasetsPageContent({ contributeUrl, docsUrl }) {
       }
     })();
 
-    return { totalDatasets, categories, contributors, lastUpdated };
-  }, [datasets]);
+    return { totalApps, categories, contributors, lastUpdated };
+  }, [apps]);
 
   return (
     <>
@@ -90,23 +92,25 @@ function DatasetsPageContent({ contributeUrl, docsUrl }) {
         <div className="tw-absolute tw-inset-0 tw-pointer-events-none tw-overflow-hidden" style={{ zIndex: 0 }}>
           <ConstellationCanvas isDarkTheme={isDarkTheme} />
         </div>
-        <div className="margin-top--lg">
-          <Header 
-            title="Datasets" 
-            tagline="Datasets from CIROH and NOAA&apos;s hydrologic research, designed to enhance forecasting, analysis, and management of water resources."
+      <div className="margin-top--lg">
+        <Header 
+            title="Apps" 
+            tagline="Enhance forecasting, analysis, and water resource management by making your web applications and tools accessible to CIROH and NOAA&apos;s hydrologic research initiatives."
             buttons={[
-                { label: "Add your Dataset", href: contributeUrl, primary: true },
+                { label: "Add your Apps", href: contributeUrl, primary: true },
                 { label: "Browse Documentation", href: docsUrl }
               ]}
-          />
-        </div>
+        />
+      </div>
+
+
       </section>
 
       {/* Stats */}
       <StatsBar
         loading={statsLoading}
         items={[
-          { label: 'Total Datasets', value: stats.totalDatasets },
+          { label: 'Total Apps', value: stats.totalApps },
           { label: 'Categories', value: stats.categories },
           { label: 'Contributors', value: stats.contributors },
           { label: 'Latest Update', value: stats.lastUpdated },
@@ -115,14 +119,14 @@ function DatasetsPageContent({ contributeUrl, docsUrl }) {
 
       <main className="tw-relative tw-z-20">
         <HydroShareResourcesSelector
-          keyword="ciroh_portal_data,ciroh_hub_data"
-          defaultImage="https://ciroh-portal-static-data.s3.us-east-1.amazonaws.com/dataset_placeholder.png"
+          keyword="ciroh_hub_notebooks"
+          defaultImage={defaultImage}
           variant="modern"
           onResultsChange={onResultsChange}
         />
 
         <div className="tw-pb-16">
-          <TechBox items={items} type={"Datasets"} />
+          <TechBox items={items} type={"Applications"} tethys />
         </div>
       </main>
     </>

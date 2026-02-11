@@ -8,7 +8,7 @@ import { IoTvOutline } from "react-icons/io5";
 import styles from './styles.module.css';
 
 /**
- * Small square/rectangular “tile” card.
+ * Small square/rectangular "tile" card.
  *  • Outer div gets id={resource_id}        → target for #hash
  *  • Overlay title is a <Link to={`#id`}>   → clicking updates URL & scrolls
  */

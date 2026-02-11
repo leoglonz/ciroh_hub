@@ -1,0 +1,46 @@
+export default [
+  {
+    name: "Manjila Singh",
+    role: "Graduate Research Assistant",
+    image: "/img/profiles/Manjila_Singh.png",
+    orgName: "The University of Alabama",
+    orgLogo: "/img/logos/uni/UAlogo.png",
+  },
+  {
+    name: "Nia Minor",
+    role: "Graduate Research Assistant",
+    image: null,
+    initial: "NM",
+    orgName: "The University of Alabama",
+    orgLogo: "/img/logos/uni/UAlogo.png",
+  },
+{
+    name: "Prajwal Halalae",
+    role: "Undergraduate Research Intern",
+    image: "/img/profiles/Prajwal_Halalae.jpg",
+    orgName: "The University of Alabama",
+    orgLogo: "/img/logos/uni/UAlogo.png",
+  },
+  {
+    name: "Giovanni Romero",
+    role: "HydroInfomatics Engineer",
+    image: "/img/profiles/Giovanni_Romero.png",
+    orgName: "Aquaveo",
+    orgLogo: "/img/logos/corp/aquaveo-badge.png",
+  },
+  {
+    name: "James Dolinar",
+    role: "Software Engineer",
+    image: null,
+    initial: "JD",
+    orgName: "Aquaveo",
+    orgLogo: "/img/logos/corp/aquaveo-badge.png",
+  }, 
+  {
+    name: "Nathan Swain",
+    role: "Project Engineer",
+    image: "/img/profiles/Nathan_Swain.jpeg",
+    orgName: "Aquaveo",
+    orgLogo: "/img/logos/corp/aquaveo-badge.png",
+  },
+];

@@ -10,8 +10,7 @@ import "./whyDocuhub.css";
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import ResearcherTestimonials from './testimonial';
-import TeamMembers from './teamMembers';
-import PrincipalInvestigators from './principalInvestigators';
+import TeamGallery from './TeamGallery';
 import OrgGallery from './OrgGallery';
 import HighlightCards from './highlightCards'
 import Hyperspeed from '../Reactbits/hyperSpeed'
@@ -493,8 +492,7 @@ export default function HomepageFeatures() {
             </div>
           </div>
         </section> */}
-        <PrincipalInvestigators />
-        <TeamMembers />
+        <TeamGallery />
         <ResearcherTestimonials />
 
         <section className="tw-relative tw-overflow-hidden tw-py-24 tw-bg-slate-100 dark:tw-bg-slate-900 tw-text-blue-800 dark:tw-text-white tw-rounded-2xl tw-no-underline">

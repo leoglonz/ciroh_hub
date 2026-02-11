@@ -49,7 +49,7 @@ export default function HydroShareCard() {
         <div className={styles.card}>
           <div className={styles.icon}><HiOutlineLink size={28} /></div>
           <h4>Optional metadata</h4>
-          <p>Enhance your card with helpful links and imagery.</p>
+          <p>Enhance your card with metadata.</p>
           <div className={styles.codeRow}>
             <code className={styles.code}>page_url</code>
             <code className={styles.code}>docs_url</code>

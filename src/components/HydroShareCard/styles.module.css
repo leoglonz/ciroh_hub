@@ -69,6 +69,13 @@
   color: var(--ifm-color-emphasis-700);
 }
 
+.card summary {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  font-weight: 750;
+  color: var(--ifm-color-emphasis-700);
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -124,6 +131,15 @@
   --tag-border: var(--ifm-color-success);
   --tag-text: var(--ifm-color-success-dark);
   --tag-bg: color-mix(in srgb, var(--ifm-color-success) 12%, transparent);
+  border-color: var(--tag-border);
+  color: var(--tag-text);
+  background: var(--tag-bg);
+}
+
+.tagDeprecated {
+  --tag-border: #c4c4c4;
+  --tag-text: #bebebe;
+  --tag-bg: rgba(172, 177, 175, 0.12);
   border-color: var(--tag-border);
   color: var(--tag-text);
   background: var(--tag-bg);

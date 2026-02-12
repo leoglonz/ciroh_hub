@@ -329,10 +329,10 @@ const config = {
                   label: 'Contribute',
                   href: '/contribute'
                 },
-                {
+                /*{
                   label: 'Feedback',
                   href: 'https://forms.office.com/r/5ww7qRWwwf'
-                },
+                },*/
                 {
                   label: 'Release Notes',
                   href: '/release-notes'
@@ -356,7 +356,7 @@ const config = {
                 },
                 {
                   label: 'CIROH Hub Repository',
-                  href: 'https://github.com/CIROH-UA/ciroh-ua_website'
+                  href: 'https://github.com/CIROH-UA/ciroh_hub'
                 },
               ]
             },

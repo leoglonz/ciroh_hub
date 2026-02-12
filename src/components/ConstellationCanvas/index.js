@@ -1,43 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 
-
-export function ConstellationCanvas() {
+export function ConstellationCanvas({ isDarkTheme }) {
   const canvasRef = useRef(null);
   const mouseRef = useRef({ x: null, y: null });
   const nodesRef = useRef([]);
   const animationIdRef = useRef(null);
   const groupCounterRef = useRef(1);
-  const [isDark, setIsDark] = React.useState(true);
-
-  // Theme detection via data-theme
-  useEffect(() => {
-    const getTheme = () =>
-      document.documentElement.getAttribute("data-theme") === "dark";
-
-    // Initialize once
-    setIsDark(getTheme());
-
-    // Debounced observer: some external scripts or widgets may briefly toggle
-    // the attribute; debounce so we only respond to stable changes.
-    let debounceTimer = null;
-    const observer = new MutationObserver(() => {
-      if (debounceTimer) clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(() => {
-        const newTheme = getTheme();
-        setIsDark(prev => (prev === newTheme ? prev : newTheme));
-      }, 250); // wait 250ms of stability before applying
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-
-    return () => {
-      observer.disconnect();
-      if (debounceTimer) clearTimeout(debounceTimer);
-    };
-  }, []);
+  const isDark = Boolean(isDarkTheme);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -240,5 +209,4 @@ export function ConstellationCanvas() {
     />
   );
 }
-
 

@@ -82,7 +82,7 @@ function NoteBooksPageContent({ contributeUrl, docsUrl, defaultImage }) {
 
       <main className="tw-relative tw-z-20">
         <HydroShareResourcesSelector
-          keyword="ciroh_hub_notebooks"
+          keyword="ciroh_hub_notebook"
           defaultImage={defaultImage}
           variant="modern"
           onResultsChange={onResultsChange}

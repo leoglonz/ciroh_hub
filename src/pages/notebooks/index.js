@@ -5,6 +5,7 @@ import { ConstellationCanvas } from '@site/src/components/ConstellationCanvas';
 import Layout from '@theme/Layout';
 import TechBox from "@site/src/components/TechBox";
 import HydroShareLogo from '@site/static/img/logos/hydroshare-white.png';
+import JupyterLogo from '@site/static/img/logos/jupyter-logo.png';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { useColorMode } from '@docusaurus/theme-common';
 import StatsBar from "@site/src/components/StatsBar";
@@ -23,7 +24,7 @@ const items = [
 export default function NoteBooksPage() {
   const contributeUrl = useBaseUrl('/contribute?current-contribution=notebooks');
   const docsUrl = useBaseUrl('/docs/products/intro');
-  const defaultImage = 'https://ciroh-portal-static-data.s3.us-east-1.amazonaws.com/app_placeholder.png'
+  const defaultImage = JupyterLogo; 
 
   return (
     <Layout title="Notebooks" description="CIROH NoteBooks">

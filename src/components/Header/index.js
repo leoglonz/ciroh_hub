@@ -77,7 +77,7 @@ export default function Header({ title, tagline, buttons }) {
               <div
                 className={clsx(
                   styles.logoBg,
-                  'tw-relative tw-w-72 tw-h-72 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-animate-float',
+                  'tw-relative tw-w-72 tw-h-72 tw-rounded-full tw-flex tw-items-center tw-justify-center',
                 )}
               >
                 <img

@@ -60,7 +60,7 @@ function NoteBooksPageContent({ contributeUrl, docsUrl, defaultImage }) {
       <div className="margin-top--lg">
         <Header 
             title="Notebooks" 
-          tagline="Enhance forecasting, analysis, and water resource management by sharing your Python (Jupyter) notebooks with CIROH and NOAA&apos;s hydrologic research initiatives."
+            tagline="Python notebooks and other code combined with data resources and readme files to execute modeling workflows."
             buttons={[
                 { label: "Add your Notebooks", href: contributeUrl, primary: true },
                 { label: "Browse Documentation", href: docsUrl }

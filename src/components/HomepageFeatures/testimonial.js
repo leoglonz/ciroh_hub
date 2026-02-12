@@ -58,7 +58,7 @@ export default function ResearcherTestimonials() {
             <div className="researcher-testimonials-container">
                 <h1 className="tw-text-4xl tw-font-extrabold tw-text-center tw-mb-6
                 tw-text-blue-800 dark:tw-text-white">
-                    Loved by Researchers
+                    User Comments
                 </h1>
                 <div style={{"textAlign": "center"}}>
                     <i>Note: CIROH Hub combines the content of CIROH DocuHub and CIROH Portal, two former CIROH resources.</i>

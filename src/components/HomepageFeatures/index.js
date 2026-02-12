@@ -700,67 +700,7 @@ export default function HomepageFeatures() {
           </div>
         </div>
 
-        {/* <div className="ciroh-cards-section">
-          <CardGridSection items={cardGridItems} />
-        </div> */}
-
-
-
-
-        {/* <section className="padded-page-section-feature" id="services">
-          <div className="container-feature">
-            <h2 className="text-center-feature mt-0">Why CIROH Hub? Elevate Your Research Journey</h2>
-            <hr className="divider-feature" />
-            <div className="row-feature ">
-              <div className="col-lg-3-feature col-md-6-feature text-center">
-                <div className="mt-5-feature">
-                  <h3 className="h4 mb-2-feature">Knowledge Hub</h3>
-                  <img src="img/graphics/why-docuhub-1.png" alt="docuhub image"></img>
-                  <p className="text-muted-feature mb-0 mt-2">Access a centralized repository of research and educational resources to enhance your hydrological expertise.</p>
-                </div>
-              </div>
-              <div className="col-lg-3-feature col-md-6-feature text-center">
-                <div className="mt-5-feature">
-                  <h3 className="h4 mb-2-feature">Research & Growth</h3>
-                  <img src="img/graphics/why-docuhub-2.png" alt="docuhub image"></img>
-                  <p className="text-muted-feature mb-0 mt-2">Explore cutting-edge research and innovative projects driving innovation in hydrology.</p>
-                </div>
-              </div>
-              <div className="col-lg-3-feature col-md-6-feature text-center">
-                <div className="mt-5-feature">
-                  <h3 className="h4 mb-2-feature">Blog & News</h3>
-                  <img src="img/graphics/why-docuhub-3.png" alt="docuhub image"></img>
-                  <p className="text-muted-feature mb-0 mt-2">Stay updated with the latest news, community insights, and updates about CIROH projects.</p>
-                </div>
-              </div>
-              <div className="col-lg-3-feature col-md-6-feature text-center">
-                <div className="mt-5-feature">
-                  <h3 className="h4 mb-2-feature">Education & Training</h3>
-                  <img src="img/graphics/why-docuhub-4.png" alt="docuhub image"></img>
-                  <p className="text-muted-feature mb-0 mt-2">Elevate your skills with tutorials, training programs, and educational materials tailored for hydrological research.</p>
-                </div>
-              </div>
-              <div className="col-lg-3-feature col-md-6-feature text-center">
-                <div className="mt-5-feature">
-                  <h3 className="h4 mb-2-feature">CyberInfrastructure</h3>
-                  <img src="img/graphics/why-docuhub-5.png" alt="docuhub image"></img>
-                  <p className="text-muted-feature mb-0 mt-2">Leverage cloud infrastuctures, including AWS, GCP, CIROH-2i2c JupyterHub, and on-premises infrastructures tailored to hydrological research needs.</p>
-                </div>
-              </div>
-              <div className="col-lg-3-feature col-md-6-feature text-center">
-                <div className="mt-5-feature">
-                  <h3 className="h4 mb-2-feature">Global Collaboration</h3>
-                  <img src="img/graphics/why-docuhub-6.png" alt="docuhub image"></img>
-                  <p className="text-muted-feature mb-0 mt-2">Join a global network of researchers and collaborators to share knowledge, resources, and innovations within the CIROH community.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */}
         <PrincipalInvestigators />
-        <TeamMembers />
-        <ResearcherTestimonials />
-
         <section className="tw-relative tw-overflow-hidden tw-py-24 tw-bg-slate-100 dark:tw-bg-slate-900 tw-text-blue-800 dark:tw-text-white tw-rounded-2xl tw-no-underline">
           <div className="tw-container tw-mx-auto tw-flex tw-px-5 tw-items-center tw-justify-center tw-flex-col tw-relative tw-z-10">
 
@@ -849,6 +789,10 @@ export default function HomepageFeatures() {
             </div>
           </div>
         </section>
+
+        <TeamMembers />
+        <ResearcherTestimonials />
+
 
 
         <section

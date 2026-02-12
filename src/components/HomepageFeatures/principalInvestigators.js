@@ -53,7 +53,7 @@ const investigators = [
 export default function PrincipalInvestigators() {
   return (
     <section className="team-section">
-      <h2 className="team-title tw-mt-8">Principal Investigators</h2>
+      <h2 className="team-title tw-mt-8">Leads</h2>
       <div className="team-divider"></div>
 
       <div className="team-grid-list">

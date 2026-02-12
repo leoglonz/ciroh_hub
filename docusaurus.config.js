@@ -8,7 +8,7 @@ const baseUrl = "/local/";
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "CIROH Hub",
-  tagline: "Documenting Water Research in the Digital Age",
+  tagline: "Hydrologic Science Research Data and Products",
   staticDirectories: ["static", "img"],
   url: "http://ciroh.org",
   baseUrl: baseUrl,

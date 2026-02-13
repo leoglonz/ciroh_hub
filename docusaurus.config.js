@@ -94,7 +94,7 @@ const config = {
     // Centralized external links used across pages/components
     externalLinks: {
       zoteroLogin: "https://www.zotero.org/user/login",
-      feedbackForm: "https://forms.office.com/r/5ww7qRWwwf",
+      feedbackForm: "https://forms.cloud.microsoft/r/NzA2sLrzeJ",
     },
 
     // Optional links for contribution CTAs
